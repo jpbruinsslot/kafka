@@ -1,0 +1,29 @@
+version: "3"
+
+volumes:
+  zookeeper-data:
+    driver: local
+  zookeeper-log:
+    driver: local
+
+services:
+  kafka:
+    build:
+      context: kafka/
+      args:
+        kafka_version: 2.6.0
+        scala_version: 2.13
+    ports:
+      - "9092"
+    volumes:
+      - ${PWD}/kafka/server.properties:/opt/kafka/config/server.properties
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: zookeeper:3.5.8
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper-data:/data
+      - zookeeper-log:/data-log
