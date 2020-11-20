@@ -7,6 +7,14 @@ volumes:
     driver: local
 
 services:
+  zookeeper:
+    image: zookeeper:3.5.8
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper-data:/data
+      - zookeeper-log:/data-log
+
   kafka:
     build:
       context: kafka/
@@ -19,11 +27,3 @@ services:
       - ${PWD}/kafka/server.properties:/opt/kafka/config/server.properties
     depends_on:
       - zookeeper
-
-  zookeeper:
-    image: zookeeper:3.5.8
-    ports:
-      - "2181:2181"
-    volumes:
-      - zookeeper-data:/data
-      - zookeeper-log:/data-log
