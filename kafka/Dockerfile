@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 
-ARG kafka_version=2.6.0
+ARG kafka_version=3.0.0
 ARG scala_version=2.13
 
 ENV FILENAME="kafka_${scala_version}-${kafka_version}.tgz"

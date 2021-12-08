@@ -8,6 +8,7 @@ volumes:
 
 services:
   zookeeper:
+    container_name: zookeeper
     image: zookeeper:3.5.8
     ports:
       - "2181:2181"
@@ -16,11 +17,12 @@ services:
       - zookeeper-log:/data-log
 
   kafka:
+    container_name: kafka
     build:
       context: kafka/
       args:
-        kafka_version: 2.6.0
-        scala_version: 2.13
+        kafka_version: "3.0.0"
+        scala_version: "2.13"
     ports:
       - "9092"
     volumes:
