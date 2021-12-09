@@ -1,5 +1,7 @@
 # Kafka
 
+Dockerized Kafka setup.
+
 ## Usage
 
 ```
@@ -15,7 +17,7 @@ and pass in your commands. E.g.
 $ ./kafka.sh kafka-topics \
     --bootstrap-server localhost:9092
     --partitions 3 \
-    --replication-factor 1
+    --replication-factor 1 \
     --topic first_topic \
     --create
 ```
