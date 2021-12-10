@@ -1,11 +1,11 @@
-# Kafka
+# [WIP] Kafka 
 
 Dockerized Kafka setup.
 
 ## Usage
 
 ```
-$ docker-compose up --build --scale kafka=3 kafka
+$ docker-compose up --build kafka
 ```
 
 ## CLI
