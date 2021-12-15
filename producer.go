@@ -13,7 +13,7 @@ import (
 
 const (
 	topic  = "first_topic"
-	broker = "localhost:32789"
+	broker = "localhost:32792"
 )
 
 func main() {

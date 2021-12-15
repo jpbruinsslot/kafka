@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3"
 
 volumes:
   zookeeper-data:
@@ -8,7 +8,6 @@ volumes:
 
 services:
   zookeeper:
-    container_name: zookeeper
     image: zookeeper:3.5.8
     ports:
       - "2181:2181"
@@ -17,7 +16,6 @@ services:
       - zookeeper-log:/data-log
 
   kafka:
-    container_name: kafka
     build:
       context: kafka/
       args:
@@ -25,7 +23,8 @@ services:
         scala_version: "2.13"
     ports:
       - "9092"
-    volumes:
-      - ${PWD}/kafka/server.properties:/opt/kafka/config/server.properties
+    hostname: kafka
+    # volumes:
+    #   - ${PWD}/kafka/server.properties:/opt/kafka/config/server.properties
     depends_on:
       - zookeeper

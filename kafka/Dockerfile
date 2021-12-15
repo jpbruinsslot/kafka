@@ -28,5 +28,8 @@ RUN apk --no-cache add \
 COPY --from=builder /opt/kafka /opt/kafka
 
 WORKDIR /opt/kafka
+ENV KAFKA_HOME /opt/kafka
 
-CMD ["./bin/kafka-server-start.sh", "config/server.properties"]
+# CMD ["./bin/kafka-server-start.sh", "config/server.properties"]
+COPY start.sh start.sh
+CMD ["./start.sh"]
