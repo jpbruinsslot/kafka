@@ -29,4 +29,7 @@ COPY --from=builder /opt/kafka /opt/kafka
 
 WORKDIR /opt/kafka
 
-CMD ["./bin/kafka-server-start.sh", "config/server.properties"]
+COPY server.properties ./config
+COPY start.sh start.sh
+
+CMD ["./start.sh"]
